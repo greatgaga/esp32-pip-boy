@@ -32,8 +32,10 @@ extern int current_time[6];
 extern const char* ntp_server;
 extern int counter_update;
 
-extern float current_temp = 0.0;
+extern float current_temp;
 extern const char* api_key_temp;
 extern const char* city;
+
+extern float current_cpu_temp;
 
 #endif

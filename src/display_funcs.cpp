@@ -48,7 +48,7 @@ void underline(int x, int y, String word, int font_size){
 
     int width = canvas.textWidth(word);
 
-    canvas.drawFastHLine(x, y + (8 * canvas.fontHeight()), width, PIPBOY_GREEN);
+    canvas.drawFastHLine(x, y + (8 * font_size), width, PIPBOY_GREEN);
 
     canvas.setCursor(x, y);
 }
@@ -58,7 +58,7 @@ void underline(int x, int y, String word, int font_size){
 void draw_stats(){
     canvas1.setColorDepth(8);
 
-    canvas1.createSprite(300, 350);
+    canvas1.createSprite(250, 200);
 
     canvas1.fillScreen(TFT_BLACK);
 
@@ -66,22 +66,23 @@ void draw_stats(){
 
     canvas1.setTextSize(3);
 
-    canvas1.setCursor(10, 10);
+    canvas1.setCursor(10, 20);
 
     // adding time
     char buff[30];
 
-    snprintf(buff, sizeof(buff), "%02d:%02d:%02d %02d.%02d.%04d", current_time[0], current_time[1], current_time[2], current_time[3], current_time[4], current_time[5]);
+    snprintf(buff, sizeof(buff), "%02d.%02d.%04d\n%02d:%02d:%02d", current_time[3], current_time[4], current_time[5], current_time[0], current_time[1], current_time[2]);
 
     canvas1.print(buff);
 
     // adding outside temp.
-    canvas1.print("\nTemp: ");
-
-    canvas1.print(String(current_temp));
+    canvas1.print("\nTemp: " + String(current_temp) + "\n");
 
     // adding current battery %
     canvas1.print("Battery %: \n");
+
+    // adding temp. of CPU
+    canvas1.print("CPU temp: " + String(current_cpu_temp));
 
     canvas1.pushSprite(10, 60);
 }

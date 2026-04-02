@@ -98,3 +98,11 @@ void update_weather(){
         client.end();
     }
 }
+
+void update_cpu_temp(){
+    float temp_f = temperatureRead();
+
+    float temp_c = (temp_f - 32) * (5 / 9);
+
+    current_cpu_temp = temp_c;
+}

@@ -30,6 +30,9 @@ int current_time[6];
 const char* ntp_server = "216.239.35.0";
 int counter_update = 0;
 
+// temp
+float current_temp = 0.0;
+
 // canvas is for menu, all other canvases are always changing their purposes
 LGFX_Sprite canvas(&lcd);
 
@@ -111,6 +114,8 @@ void setup(){
 
     // creating sprites
     canvas.createSprite(300, 30);
+
+    update_weather();
 }
 
 void loop(){
@@ -147,6 +152,12 @@ void loop(){
         Serial.println(current_time[3]);
         Serial.println(current_time[4]);
         Serial.println(current_time[5]);
+    }
+
+    if (counter_update % 30 == 0){
+        update_cpu_temp();
+
+        Serial.println(String(current_cpu_temp) + " °C");
     }
 
     draw_one_frame();

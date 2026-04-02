@@ -9,5 +9,6 @@ bool connect_to_AP(String ssid, String passwd);
 void get_local_time();
 void test_ping();
 void update_weather();
+void update_cpu_temp();
 
 #endif
